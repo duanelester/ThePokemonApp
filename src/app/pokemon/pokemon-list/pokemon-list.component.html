@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header">
+        {{title}}
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table mb-0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pokemon of pokemonList">
+                        <td>
+                            <a [routerLink]="['/details', pokemon.name, pokemon.url]">
+                                {{pokemon.name}}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger">
+    Error: {{ errorMessage }}
+</div>

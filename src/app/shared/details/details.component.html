@@ -1,0 +1,63 @@
+<div class="card">
+    <div class="card-header">
+        {{title}}
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-8">
+                <div class="row" *ngIf="name">
+                    <div class="col-md-3">Name:</div>
+                    <div class="col-md-6">{{name}}</div>
+                </div>
+                <div class="row" *ngIf="height">
+                    <div class="col-md-3">Height:</div>
+                    <div class="col-md-6">{{height}}</div>
+                </div>
+                <div class="row" *ngIf="weight">
+                    <div class="col-md-3">Weight:</div>
+                    <div class="col-md-6">{{weight}}</div>
+                </div>
+                <div class="row" *ngIf="base_experience">
+                    <div class="col-md-3">Base Experience:</div>
+                    <div class="col-md-6">{{base_experience}}</div>
+                </div>
+                <div class="row" *ngIf="abilities && abilities.length">
+                    <div class="col-md-3">List of Abilities:</div>
+                    <ul class="col-md-6">
+                        <li *ngFor="let ability of abilities" style="list-style-type: none;">
+                            <a
+                                [routerLink]="['/ability', pokemonName, pokemonUrl, ability.name, ability.url]">{{ability.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row" *ngIf="effects">
+                    <div class="col-md-3">Effects:</div>
+                    <div class="col-md-6">{{effects}}</div>
+                </div>
+                <div class="row" *ngIf="pokemonsHavingThisAbility && pokemonsHavingThisAbility.length">
+                    <div class="col-md-3">List of Pokemon having this ability:</div>
+                    <ul class="col-md-6">
+                        <li *ngFor="let pokemon of pokemonsHavingThisAbility">
+                            {{pokemon}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <button class="btn btn-outline-secondary mr-3" style="width:80px" (click)="onBack()">
+                    <i class="fa fa-chevron-left"></i> Back
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}
+    </div>
+</div>
